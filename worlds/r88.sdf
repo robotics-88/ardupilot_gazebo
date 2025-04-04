@@ -1,0 +1,1193 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="r88">
+
+    <physics name="1ms" type="ignore">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin filename="gz-sim-navsat-system"
+      name="gz::sim::systems::NavSat">
+    </plugin>
+
+    <scene>
+      <ambient>1.0 1.0 1.0</ambient>
+      <background>0.8 0.8 0.8</background>
+      <sky></sky>
+    </scene>
+
+    <spherical_coordinates>
+      <latitude_deg>37.6557596</latitude_deg>
+      <longitude_deg>-89.2752828</longitude_deg>
+      <elevation>110</elevation>
+      <heading_deg>0</heading_deg>
+      <surface_model>EARTH_WGS84</surface_model>
+    </spherical_coordinates>
+
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.8 0.8 0.8 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="axes">
+      <static>1</static>
+      <link name="link">
+        <visual name="r">
+          <cast_shadows>0</cast_shadows>
+          <pose>5 0 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>10 0.01 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 0.8</ambient>
+            <diffuse>1 0 0 0.8</diffuse>
+            <emissive>1 0 0 0.8</emissive>
+            <specular>0.5 0.5 0.5 0.8</specular>
+          </material>
+        </visual>
+        <visual name="g">
+          <cast_shadows>0</cast_shadows>
+          <pose>0 5 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 1 0 0.8</ambient>
+            <diffuse>0 1 0 0.8</diffuse>
+            <emissive>0 1 0 0.8</emissive>
+            <specular>0.5 0.5 0.5 0.8</specular>
+          </material>
+        </visual>
+        <visual name="b">
+          <cast_shadows>0</cast_shadows>
+          <pose>0 0 5.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 0.8</ambient>
+            <diffuse>0 0 1 0.8</diffuse>
+            <emissive>0 0 1 0.8</emissive>
+            <specular>0.5 0.5 0.5 0.8</specular>
+          </material>
+        </visual>
+        <sensor name="navsat_sensor" type="navsat">
+          <always_on>1</always_on>
+          <update_rate>1</update_rate>
+        </sensor>
+      </link>
+    </model>
+
+    <include>
+      <uri>model://decco</uri>
+      <pose degrees="true">0 0 0.195 0 0 90</pose>
+    </include>
+
+    <model name="heightmap">
+      <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://heightmap</uri>
+      </include>
+    </model>
+
+    <model name='tree_1_model'>
+      <pose>5 25 0 2.2204460492503135e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model'>
+      <pose>5 20 0 2.2204460492503135e-15 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model'>
+      <pose>-20.228200912475586 31.217327117919922 5.4014562598072094e-15 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_4_model'>
+      <pose>5 10 0 2.2204460492503135e-15 0 0</pose>
+      <include>
+        <uri>model://tree_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_5_model'>
+      <pose>8.2671298980712891 17.001861572265625 3.9974237638009009e-15 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_5</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model'>
+      <pose>-8.6895380020141602 25 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model'>
+      <pose>-9.4495067596435547 20 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_3_model'>
+      <pose>-5 15 0 2.2204460492503135e-15 0 0</pose>
+      <include>
+        <uri>model://bush_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model'>
+      <pose>-5 10 0 2.2204460492503135e-15 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1'>
+      <pose>-4.1817097663879395 30.009433746337891 -2.1140885689865637e-15 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_1'>
+      <pose>7.1206970781906058 33.795841756012436 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_2'>
+      <pose>-8.1927380275507069 41.599832549347411 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3'>
+      <pose>4.2038620670483411 49.01250275672124 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1'>
+      <pose>-11.293803955452677 6.4507147433571177 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_1'>
+      <pose>-10.130033464688331 12.412418855595625 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_1'>
+      <pose>-6.025571545300469 35.002108174275854 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_2'>
+      <pose>5.0854810323449353 42.645567447008446 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_3'>
+      <pose>9.9817784346153324 54.350435734886915 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_4'>
+      <pose>-6.4933859890879724 47.786214912132486 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_4_model_1'>
+      <pose>9.0231851265682792 39.710001506978259 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_1'>
+      <pose>-6.9922272520527065 57.244537750946641 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_2'>
+      <pose>-4.4143133608682597 62.363675153379972 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_3'>
+      <pose>13.186300277709961 58.510299682617188 1.646909236907959 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_4'>
+      <pose>3.975100040435791 76.398902893066406 1.4622551202774048 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_5'>
+      <pose>14.131400108337402 83.53759765625 1.1881883144378662 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_6'>
+      <pose>34.348792914450698 72.36446403376705 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_3_7'>
+      <pose>38.923999786376953 89.907096862792969 2.3542659282684326 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_3_1'>
+      <pose>20.740299224853516 68.365898132324219 2.4918673038482666 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_3_2'>
+      <pose>15.434800148010254 65.818901062011719 1.7648110389709473 -2.2204460492503136e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_3_3'>
+      <pose>9.8812671928219871 82.75988829435191 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_3_4'>
+      <pose>0.063719312194892241 64.868969248826204 0 1.6653345369377348e-15 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4'>
+      <pose>-17.914064183903392 44.727378557468548 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_1'>
+      <pose>-21.480400085449219 23.819000244140625 1.2793902158737183 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_2'>
+      <pose>-37.277198791503906 36.347999572753906 0.89828109741210938 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3'>
+      <pose>-35.747798919677734 19.149599075317383 1.0542820692062378 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_4'>
+      <pose>-58.002300262451172 49.617500305175781 4.0980496406555176 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_5'>
+      <pose>-29.401899337768555 37.337001800537109 1.6823322772979736 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_6'>
+      <pose>-39.998500823974609 78.556602478027344 1.2793010473251343 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_7'>
+      <pose>-83.704134255785689 111.50070522721199 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_8'>
+      <pose>-67.355556938312873 127.88483313902688 0 1.6653345369377348e-15 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_1'>
+      <pose>-16.848885250798173 16.363141264365012 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_2'>
+      <pose>-36.71583153773166 26.648563470062257 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_3'>
+      <pose>-27.575705370571605 32.121737308411625 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_2'>
+      <pose>-17.695576141249177 14.900668450743296 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_3'>
+      <pose>-35.665724904382728 27.76736306915398 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_4'>
+      <pose>-7.5522054376548766 45.408530479203286 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_5'>
+      <pose>7.3570954098571342 53.568973606985921 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_6'>
+      <pose>-6.2350290286786816 51.747763383317931 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_7'>
+      <pose>14.019626895077067 64.025559230668378 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_8'>
+      <pose>19.011509753220842 83.143799145823579 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_9'>
+      <pose>30.612179525674957 73.286790913977427 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_10'>
+      <pose>31.470379906573168 101.93066652399011 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_11'>
+      <pose>32.032435770653272 107.49031810457898 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_4'>
+      <pose>-8.4606679933782445 53.957321017241597 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_5'>
+      <pose>1.6780788203920292 70.894170339764571 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_6'>
+      <pose>15.6128168021866 61.512158407946707 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_7'>
+      <pose>27.556424602446427 68.364045575739979 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_8'>
+      <pose>29.352181901470374 104.35554740513399 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_9'>
+      <pose>21.034576538259437 92.881128863457988 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_10'>
+      <pose>-44.18108405438754 57.609882922944024 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_11'>
+      <pose>-72.783778875767638 77.21109410581164 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_12'>
+      <pose>-53.102364924294037 98.597314515747456 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_13'>
+      <pose>-22.808137579618315 81.681926144604518 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_14'>
+      <pose>-58.674175927242118 32.243044775572301 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_15'>
+      <pose>-43.526147706166462 41.819115914698671 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_16'>
+      <pose>-27.215331078317302 55.725139665383523 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_1'>
+      <pose>-56.648530705941305 80.438949468711684 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_2'>
+      <pose>-62.768726388752015 103.85837797110034 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_3'>
+      <pose>-29.669996539761648 88.644135939462871 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_4'>
+      <pose>-14.186681394203237 78.227010018675429 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_1'>
+      <pose>-40.789846862277329 19.669803332544586 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_2'>
+      <pose>-47.29834184122879 26.716365651763468 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_3'>
+      <pose>-46.879682132402785 58.89006533966262 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_4'>
+      <pose>-29.225800765570337 59.373256868496945 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_5'>
+      <pose>-31.71018861942979 81.30861773737557 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_6'>
+      <pose>-66.318072577823301 65.604584894713653 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_7'>
+      <pose>-32.068550813995685 45.155357030102074 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_8'>
+      <pose>-36.712668344460489 72.412436200355629 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_1_model_9'>
+      <pose>-48.362209662979204 99.306779615917293 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_1</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_5'>
+      <pose>-48.98063441446088 42.278962033264484 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_3_model_6'>
+      <pose>-20.933180680457731 71.711564698054843 5.401460071455472e-15 -1.3322676295501882e-15 0 0</pose>
+      <include>
+        <uri>model://tree_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5'>
+      <pose>-29.627522191458684 16.119230486319104 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_6'>
+      <pose>-46.087708703910025 34.193717073358755 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_7'>
+      <pose>-54.489406858855723 68.898008810228077 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_8'>
+      <pose>-46.924693884104869 86.668856809657839 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_9'>
+      <pose>-32.57617696638728 101.35968839901393 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_10'>
+      <pose>-10.846908974769065 95.076246607029276 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_11'>
+      <pose>-60.552655895465101 27.399121949938809 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_12'>
+      <pose>-30.600890484766619 52.388636223413435 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_2'>
+      <pose>-9.5225872716809228 -4.852182656836832 0 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_3'>
+      <pose>-8.9481362033606828 -10.08262621341113 0 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_4'>
+      <pose>-18.808838071523184 -5.8993476613793607 0 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_17'>
+      <pose>-9.9104981727225017 0.7991900595903445 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_18'>
+      <pose>-18.703337807574286 -9.9743709323893253 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_19'>
+      <pose>-8.936515364365464 -11.902870255428155 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_2_model_20'>
+      <pose>-14.200729184217419 -11.917811349774187 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_3_model_1'>
+      <pose>-6.8864120205711572 -8.0957973104267591 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_3_model_2'>
+      <pose>-4.4100161613140934 -12.48417582321782 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_3</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_1'>
+      <pose>-32.257301330566406 -1.0307199954986572 4.4873809814453125 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_2'>
+      <pose>-44.25 3.1128499507904053 5.1976780891418457 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_3'>
+      <pose>-57.181499481201172 12.915599822998045 5.0386443138122559 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_4'>
+      <pose>-56.446498870849609 -2.5388000011444092 10.301112174987793 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_5'>
+      <pose>-43.062698364257812 -6.7948498725891104 9.5084934234619141 -2.2204460492503136e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_6'>
+      <pose>-69.537101745605469 7.839129924774169 12.75051212310791 -2.2204460492503136e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_7'>
+      <pose>-53.055301666259766 -12.072699546813965 12.489314079284668 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_8'>
+      <pose>-62.197700500488281 -5.6402201652526855 11.45240306854248 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_7_1'>
+      <pose>-45.682201385498047 -19.485700607299805 14.230937004089352 -2.2204460492503136e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_7_2'>
+      <pose>-56.506500244140625 -21.782100677490234 16.011594772338867 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_5_7_3'>
+      <pose>-38.395198822021484 -21.129999160766598 12.237927436828613 5.5511151231257827e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_1'>
+      <pose>-40.429599761962891 -8.3639402389526367 8.9090681076049805 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_2'>
+      <pose>-37.337501525878906 -25.477399826049805 12.433058738708496 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_3'>
+      <pose>-52.72869873046875 -8.9958400726318359 12.692182540893555 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_4'>
+      <pose>-55.901199340820312 -12.83329963684082 19.196422576904297 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_5'>
+      <pose>-46.807701110839844 -18.429300308227539 13.83909797668457 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_6'>
+      <pose>-53.349601745605469 -25.407800674438477 16.765279769897461 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_7'>
+      <pose>-52.097663390497033 11.506736181539324 1.0542800426483154 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_8'>
+      <pose>-32.969100952148438 -15.173800468444824 7.8217682838439941 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_4_3_9'>
+      <pose>-32.143100738525391 -31.517599105834961 10.439499855041504 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_1'>
+      <pose>7.5783528900531136 5.8835675463875283 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_2'>
+      <pose>4.3483635760137087 13.339913765156464 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_3'>
+      <pose>-6.0066175810064388 -1.8636534383789165 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_4'>
+      <pose>-3.1510885666494985 -5.2283657164128989 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_5'>
+      <pose>-6.0749157723811997 7.8118856311812941 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_6'>
+      <pose>5.5038061362973485 8.3884511340596575 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_2_model_1_7'>
+      <pose>7.119343465810096 -1.1239161999824638 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_2</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_13'>
+      <pose>9.9215358018050903 4.2770511207717554 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_7_model_14'>
+      <pose>9.000293077043553 8.4955313386778499 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://tree_7</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_5'>
+      <pose>-8.2370932261519663 11.773554372631281 -2.1140900512942214e-15 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_6'>
+      <pose>9.0880129107908321 1.7354568220447675 -2.1140900512942214e-15 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tree_1_model_1_7'>
+      <pose>-20.118471866060403 7.8936220947271316 -2.1140900512942214e-15 9.9920072216264089e-16 0 0</pose>
+      <static>true</static>
+      <include>
+        <uri>model://tree_1</uri>
+      </include>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_12'>
+      <pose>-4.1199269750013805 -8.7821769587332934 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_13'>
+      <pose>6.8374179917087723 3.7667654323551467 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='bush_4_model_14'>
+      <pose>8.8063133097274164 -3.9741386855949301 0 9.9920072216264089e-16 0 0</pose>
+      <include>
+        <uri>model://bush_4</uri>
+      </include>
+      <static>false</static>
+      <self_collide>false</self_collide>
+    </model>
+
+  </world>
+</sdf>
